@@ -1,0 +1,6 @@
+for i in `ls | grep pdf`
+ do 
+     filename=`echo $i | awk -F. '{print $1}'`
+     mkdir $filename
+     cp -r $i $filename
+ done

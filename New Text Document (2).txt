@@ -1,0 +1,247 @@
+echo "Enter the n"
+read n
+for((i=1;i<=$n;i++))
+{
+a=$((2**$i))
+echo $a
+}
+
+
+echo "Enter the n"
+read n
+for((i=1;i<=$n;i++))
+{
+a=$((a+(1/i)))
+}
+echo $a
+
+echo "Enter the no"
+read n
+for((i=2;i<=$n/2;i++))
+do
+if [ $(($n % $i)) -eq 0 ]
+then
+f=1
+break
+fi
+done
+if [[ $f -eq 1 ]]
+then
+echo "not prime"
+else
+echo "prime"
+fi
+
+
+
+echo "Enter the lower limit"
+read l
+echo "Enter the higher limit"
+read h
+for((j=l;j<=h;j++))
+do
+for((i=2;i<=$j/2;i++))
+do
+if [ $(($j % $i)) -ne 0 ]
+then
+f=1
+else
+f=0
+fi
+done
+if [[ $f -eq 1 ]]
+then
+echo $j
+fi
+done
+
+
+echo "Enter the no"
+read n
+a=1
+for((i=1;i<=n;i++))
+do
+a=$(($a*$i))
+done
+echo $a
+
+
+
+echo "Enter the no"
+read n
+for((i=2;i<=n;i++))
+do
+if [ $(($n % $i)) -eq 0 ]
+then
+for((j=2;j<=$i/2;i++))
+do
+if [ $(($i % $j)) -ne 0 ]
+then
+f=1
+else
+f=0
+fi
+done
+if [[ $f -eq 1 ]]
+then
+echo $i
+fi
+fi
+done
+
+
+
+
+
+echo "Enter the no"
+read n
+i=1
+while [[ $i -lt $n ]]
+do
+a=$((2**$i))
+echo $a
+i=$(($i + 1))
+done
+
+
+
+
+
+while [[ i -lt 12 ]]
+do
+a=$(($(($RANDOM % 10)) % 2))
+if [[ a -eq 1 ]]
+then
+echo "Head"
+else
+echo "Tail"
+fi
+i=$(($i + 1))
+done
+
+
+echo "Enter the inital amount"
+read x
+echo "Enter amount reached"
+read y
+while [[ $x -ne 0 ]]
+do
+a=$(($(($RANDOM % 10)) % 2))
+if [[ a -eq 1 ]]
+then
+a=$(($a+1))
+fi
+b=$(($b + 1))
+x=$(($x - 1))
+done
+echo "No of times he/she won $a"
+echo "No of bet $b"
+
+
+
+echo "Enter your choice 1. degF 2. degC"
+read x
+function degF() {
+if [[ $1 -gt 32 ]] && [[ $1 -lt 212 ]] 
+then
+F=$(($(($1*9/5)) + 32))
+echo "Temp in Fahrenheit is $F F"
+else
+echo "Please enter the temp in range"
+fi 
+}
+function degC() {
+if [[ $1 -gt 0 ]] && [[ $1 -lt 100 ]] 
+then
+C=$(($(($1 - 32)) * 5/9))
+echo "Temp in celsius is $C C"
+else
+echo "Please enter the temp in range"
+fi
+}
+case $x in
+1)
+echo "Enter temp in degree celsius"
+read F
+degF $F
+;;
+2)
+echo "Enter temp in degree Fahrenheit"
+read C
+degC $C
+;;
+*)
+echo "Enter valid input";;
+esac
+
+
+
+
+
+echo "Enter your no"
+read x
+function check() {
+o=$1
+s=$1
+r=0
+while [[ s -ne 0 ]]
+do
+a=$(($s % 10))
+r=$(($(($r*10))+$a))
+s=$(($s/10))
+done
+if [[ r -eq o ]]
+then
+echo "Your entered numner is palindrome"
+else
+echo "Your entered number is not palindrome"
+fi
+}
+check $x
+
+
+
+
+
+
+
+
+
+
+
+echo "Enter your no"
+read x
+function checkprime() {
+for((i=2;i<=$1/2;i++))
+do
+if [ $(($1 % $i)) -eq 0 ]
+then
+f=1
+break
+fi
+done
+if [[ $f -eq 1 ]]
+then
+echo "Your enterd number is palindrome but not prime"
+else
+echo "Your enterd number is palindrome as well as prime"
+fi
+}
+function checkpalindrome() {
+o=$1
+s=$1
+r=0
+while [[ s -ne 0 ]]
+do
+a=$(($s % 10))
+r=$(($(($r*10))+$a))
+s=$(($s/10))
+done
+if [[ r -eq o ]]
+then
+checkprime $o
+else
+echo "Your entered number is not palindrome"
+fi
+}
+checkpalindrome $x
